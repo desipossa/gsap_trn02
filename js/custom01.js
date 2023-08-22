@@ -41,10 +41,32 @@ const L = gsap.from('.left', {
 const LINK = document.querySelectorAll('.gnb a');
 const LINK2 = gsap.utils.toArray('.gnb a');
 const NUM = document.querySelector('.num');
+
+const SEC = gsap.utils.toArray('section');
 console.log(LINK, LINK2);
 
 
-
+SEC.forEach((it, idx) => {
+    gsap.to(it, {
+        scrollTrigger: {
+            trigger: it,
+            onEnter: ({ progress, direction, isActive }) => {
+                NUM.innerHTML = idx + 1;
+                SEC.forEach(it => it.classList.remove('on'));
+                it.classList.add('on');
+                LINK2.forEach(it => it.classList.remove('on'));
+                LINK2[idx].classList.add('on');
+            },
+            onEnterBack: ({ progress, direction, isActive }) => {
+                NUM.innerHTML = idx + 1;
+                SEC.forEach(it => it.classList.remove('on'));
+                it.classList.add('on');
+                LINK2.forEach(it => it.classList.remove('on'));
+                LINK2[idx].classList.add('on');
+            }
+        }
+    })
+})
 
 
 LINK.forEach((it, idx, arry) => {
@@ -53,11 +75,11 @@ LINK.forEach((it, idx, arry) => {
         const TG = e.target.hash;
         console.log(TG);
         gsap.to(window, {
-            scrollTo: { y: TG, offsetY: 100 },
+            scrollTo: { y: TG, offsetY: 0 },
             ease: 'bounce',
         });
 
-        NUM.innerHTML = idx;
+
     })
 })
 
