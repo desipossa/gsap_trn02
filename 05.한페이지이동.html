@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+
+    <style>
+        .box {
+            height: 100vh;
+        }
+
+        .box.on {
+            font-size: 100px;
+            transition: 0.5s;
+        }
+
+        nav {
+            position: fixed;
+            top: 100px;
+            right: 100px;
+        }
+
+        nav a.on {
+            color: tomato;
+        }
+
+        h1 {
+            position: fixed;
+            top: 100px;
+            left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>num</h1>
+
+    <section id="page01" class="box">01</section>
+    <section id="page02" class="box">02</section>
+    <section id="page03" class="box">03</section>
+    <section id="page04" class="box">04</section>
+    <section id="page05" class="box">05</section>
+
+    <nav>
+        <ul>
+            <li><a href="#page01">page01</a></li>
+            <li><a href="#page02">page02</a></li>
+            <li><a href="#page03">page03</a></li>
+            <li><a href="#page04">page04</a></li>
+            <li><a href="#page05">page05</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        // $(function () {
+        //     $('.to_top').on('click', function () {
+        //         $('html, body').animate({ scrollTop: 0 }, 1000)
+        //     })
+        // })
+
+        // window.addEventListener('DOMContentLoaded', function () {
+        //     const TOTOP = document.querySelector('.to_top');
+        //     //const DOM = document.querySelector('html, body');
+        //     TOTOP.addEventListener('click', function () {
+        //         window.scrollTo({ top: 0, behavior: "smooth" })
+        //     })
+        // });
+
+        // window.addEventListener('DOMContentLoaded', function () {
+        //     const TOTOP = document.querySelector('.to_top');
+        //     TOTOP.addEventListener('click', function () {
+        //         gsap.to(window, { scrollTo: 0 })
+        //     })
+        // });
+
+
+        const LNK = gsap.utils.toArray('nav a');
+        const SEC = gsap.utils.toArray('.box');
+
+        const H1 = document.querySelector('h1');
+
+        LNK.forEach(it => {
+            it.addEventListener('click', function (e) {
+                e.preventDefault();
+                const L = e.target.hash;
+                gsap.to(window, { scrollTo: L });
+                LNK.forEach(it => it.classList.remove('on'))
+                e.target.classList.add('on')
+            })
+        });
+
+        SEC.forEach((it, idx) => {
+            gsap.to(it, {
+                scrollTrigger: {
+                    trigger: it,
+                    toggleClass: "on",
+                }
+            });
+
+            //H1.innerText = '';
+            gsap.to('h1', {
+                text: { value: "This is the new text", delimiter: " " },
+                duration: 2,
+                scrollTrigger: {
+                    trigger: it,
+                    // toggleClass: "on",
+                }
+            })
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>
