@@ -1,0 +1,42 @@
+.section {
+    height: 100vh;
+}
+
+.section:nth-child(odd) {
+    background: #f9f9f9;
+}
+
+.inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+#intro h2 span {
+    display: inline-block;
+    font-size: 100px;
+    font-weight: 900;
+}
+
+
+.logo {
+    position: fixed;
+    top: 80px;
+    left: 80px;
+    z-index: 999;
+}
+
+.footer {
+    position: fixed;
+    bottom: 80px;
+    left: 80px;
+    z-index: 999;
+}
+
+.gnb {
+    position: fixed;
+    top: 50%;
+    right: 80px;
+    transform: translate(0, -50%);
+    z-index: 999;
+}
