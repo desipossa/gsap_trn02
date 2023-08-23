@@ -11,10 +11,6 @@ H1.addEventListener('click', e => {
 
 const NAVLINK = gsap.utils.toArray('.gnb a');
 
-console.log(NAVLINK);
-// [a,a,a,a,a,a]
-
-
 NAVLINK.forEach((it, idx) => {
     it.addEventListener('click', (e) => {
         e.preventDefault();
@@ -60,12 +56,23 @@ txt.forEach((it, idx, arry) => {
 });
 
 
+const T = document.querySelector('#profile .txt');
+const TXT = document.querySelector('#profile .txt').innerText;
+const STXT = [...TXT].map(it => `<span>${it}</span>`).join('');
+T.innerHTML = STXT;
+
+const SPAN = T.querySelectorAll('span');
+
+SPAN.forEach((it, idx) => {
+    it.style.cssText = `
+    color: #f00;
+    font-size: ${10 * idx}px;
+    `;
+})
 
 
-// T.forEach((it, idx) => {
-//     const TX = it.map(it => `<span>${it}</span>`);
-//     console.log(TX)
-// })
+
+
 
 
 
