@@ -42,6 +42,40 @@
     align-items: center;
 }
 
+#profile .txt {
+    position: relative;
+    width: 400px;
+    height: 400px;
+
+}
+
+#profile .txt span {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 50%;
+
+    transform-origin: center bottom;
+}
+
+#profile .case {
+    position: relative;
+    width: 400px;
+    height: 400px;
+}
+
+#profile .case>* {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#profile .img_box {
+    border-radius: 50%;
+    overflow: hidden;
+    border: 30px solid #fff;
+}
+
 
 .logo {
     position: fixed;

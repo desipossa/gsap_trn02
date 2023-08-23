@@ -65,9 +65,16 @@ const SPAN = T.querySelectorAll('span');
 
 SPAN.forEach((it, idx) => {
     it.style.cssText = `
-    color: #f00;
-    font-size: ${10 * idx}px;
+    font-size: 24px;
+    transform: translate(-50%, 0) rotate(${360 / SPAN.length * idx}deg);
     `;
+});
+
+gsap.to(T, {
+    rotate: 360,
+    duration: 10,
+    repeat: -1,
+    ease: 'linear',
 })
 
 
