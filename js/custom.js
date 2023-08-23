@@ -57,10 +57,8 @@ txt.forEach((it, idx, arry) => {
 
 
 const T = document.querySelector('#profile .txt');
-const TXT = document.querySelector('#profile .txt').innerText;
-const STXT = [...TXT].map(it => `<span>${it}</span>`).join('');
+const STXT = [...T.innerText].map(it => `<span>${it}</span>`).join('');
 T.innerHTML = STXT;
-
 const SPAN = T.querySelectorAll('span');
 
 SPAN.forEach((it, idx) => {
