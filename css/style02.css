@@ -1,0 +1,32 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+.section {
+    height: 100vh;
+}
+
+.section:nth-child(odd) {
+    background: #f9f9f9;
+}
+
+#hscroll {
+    background: #fff;
+}
+
+#hscroll .case {
+    display: flex;
+    width: 1400px;
+    margin: 0 auto;
+    height: 700px;
+    background: #ff0;
+    overflow: hidden;
+}
+
+#hscroll .case .page {
+    flex: 0 0 100%;
+}
+
+/* .move {
+    padding: 0 300px;
+} */

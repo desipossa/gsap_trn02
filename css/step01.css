@@ -1,0 +1,43 @@
+body {
+    overflow-x: hidden;
+}
+
+
+.sec {
+    height: 100vh;
+}
+
+.inner {
+    width: 1400px;
+    margin: 0 auto;
+}
+
+#h_scroll {
+    display: flex;
+    flex-wrap: nowrap;
+    /* overscroll-behavior: none; */
+    width: 100%;
+}
+
+.page {
+    /* width: 100%; */
+    /* flex: 0 0 100%; 와는 다름... 여기서 실수 */
+    flex: 0 0 100%;
+
+    display: flex;
+    align-items: center;
+}
+
+.page h3 {
+    font-size: 32px;
+    font-weight: 900;
+    margin: 0 0 18px 0;
+}
+
+.page:nth-child(odd) {
+    background: #f9f9f9;
+}
+
+.page:nth-child(even) {
+    background: #f1f1f1;
+}

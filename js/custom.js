@@ -34,9 +34,9 @@ txt.forEach((it, idx, arry) => {
     const chars = it.querySelectorAll('span');
 
     gsap.from(chars, {
-        yPercent: 100,
+        yPercent: 400,
         autoAlpha: 0,
-        duration: 1,
+        duration: 3,
         //repeat: 3,
         //repeatDelay: 2,
         //yoyo: true,
@@ -45,35 +45,58 @@ txt.forEach((it, idx, arry) => {
             amount: 1,
             from: "random"
         },
-        // scrollTrigger: {
-        //     trigger: it,
-        //     start: "top center",
-        //     //end: "+=400",
-        //     toggleActions: "play none play reverse",
-        //     markers: 1
-        // }
+        scrollTrigger: {
+            trigger: it,
+            start: "top center",
+            end: "bottom center",
+            //end: "+=400",
+            toggleActions: "restart none restart none",//"onEnter, onLeave, onEnterBack, onLeaveBack" 
+            markers: 1
+        }
     });
 });
 
 
-const T = document.querySelector('#profile .txt');
-const STXT = [...T.innerText].map(it => `<span>${it}</span>`).join('');
-T.innerHTML = STXT;
-const SPAN = T.querySelectorAll('span');
+const RLT = document.querySelectorAll('.R_txt');
 
-SPAN.forEach((it, idx) => {
-    it.style.cssText = `
-    font-size: 24px;
-    transform: translate(-50%, 0) rotate(${360 / SPAN.length * idx}deg);
+RLT.forEach(it => {
+    const STXT = [...it.innerText].map(it => `<span>${it}</span>`).join('');
+    it.innerHTML = STXT;
+    const SPAN = it.querySelectorAll('span');
+
+    SPAN.forEach((it, idx) => {
+        it.parentElement.style.cssText = `
+        position: relative;
+        `
+        it.style.cssText = `
+        position: absolute;
+        top: 0;
+        left: 50%;
+        height: 50%;
+        transform-origin: center bottom;
+        transform: translate(-50%, 0) rotate(${360 / SPAN.length * idx}deg);
     `;
-});
+    });
 
-gsap.to(T, {
-    rotate: 360,
-    duration: 10,
-    repeat: -1,
-    ease: 'linear',
+    gsap.to(it, {
+        rotate: 360,
+        duration: 10,
+        repeat: -1,
+        ease: 'linear',
+    })
 })
+// const STXT = [...T.innerText].map(it => `<span>${it}</span>`).join('');
+// T.innerHTML = STXT;
+// const SPAN = T.querySelectorAll('span');
+
+// SPAN.forEach((it, idx) => {
+//     it.style.cssText = `
+//     font-size: 24px;
+//     transform: translate(-50%, 0) rotate(${360 / SPAN.length * idx}deg);
+//     `;
+// });
+
+
 
 
 
